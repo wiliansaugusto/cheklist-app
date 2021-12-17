@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { HomeComponent } from './views/home/home.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { CategoryComponent } from './views/category/category.component';
 
 
 
@@ -14,7 +17,10 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

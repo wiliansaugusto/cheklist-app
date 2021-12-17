@@ -1,4 +1,7 @@
 # CheklistApp
+## Projeto desenvolvido com auxilio do curso Udemy - Desenvolvimento Full Stack: Angular, SpringBoot, MySQL, AWS.
+### Instrutor do Curso **Carlos Alberto Joia Lazarin**
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
 

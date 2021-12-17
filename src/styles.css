@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .w-10p{
-  width: 30%;
+  width: auto;
   height: 100%;
 }
 .ml-15{

@@ -1,0 +1,37 @@
+.card-not-found{
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.card-content{
+  display: contents;
+
+}
+ .card-content img{
+    width:25rem;
+ }
+ p{
+   width: 50%;
+ }
+.card-content span{
+  vertical-align: super;
+}
+
+mat-card-header{
+  height: 100%;
+  font-weight: 600;
+  font-size: 3.375rem;
+
+}
+mat-card-subtitle{
+text-align: center;
+margin-bottom: 23px;
+}
+mat-card-title{
+  font-size: 40px;
+  text-align: center;
+}

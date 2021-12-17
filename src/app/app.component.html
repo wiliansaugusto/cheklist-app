@@ -1,7 +1,7 @@
 <div class="main-container">
   <app-header [sidenav]="sidenav"></app-header>
 
-  <mat-sidenav-container>
+  <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
       class="w-10p"
       #sidenav
@@ -13,17 +13,28 @@
       <mat-list>
         <mat-list-item (click)="sidenav.toggle()">
           <mat-icon>close</mat-icon>
-          <span class="ml-15">
-          <a href=""> Fechar</a></span>
+          <span class="ml-15"> <a>  Fechar</a></span>
         </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item  >
+          <mat-icon>home</mat-icon>
+          <span class="ml-15"> <a routerLink="" (click)="sidenav.toggle()">Home</a></span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item  >
+          <mat-icon>category</mat-icon>
+          <span class="ml-15"> <a routerLink="category" (click)="sidenav.toggle()">
+            Categoria</a></span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
       </mat-list>
+
     </mat-sidenav>
 
-    <mat-sidenav-content>
-
-      <h1>Aplicação teste do curso UDEMY</h1>
-
-
+    <mat-sidenav-content class="principal">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
