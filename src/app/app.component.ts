@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cheklist-app';
+
+  public events: string[] = [];
+  public opened: boolean = false;
+
+  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
 }

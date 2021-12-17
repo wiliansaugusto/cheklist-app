@@ -1,0 +1,13 @@
+a{
+  color: black;
+  text-decoration: none;
+}
+a:hover{
+  font-size: 1.125rem;
+}
+ .main-container{
+   display: flex;
+   flex-direction: column;
+   position: relative;
+
+ }
