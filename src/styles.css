@@ -10,3 +10,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ml-15{
   margin-left: 0.9375rem;
 }
+.w-100{
+  width: 100%;
+}
+.m-20{
+  margin: 1.25rem;
+}
+.flx-center-row{
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+.flx-evely{
+justify-content: space-evenly;
+}

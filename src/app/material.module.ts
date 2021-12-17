@@ -7,7 +7,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
 
@@ -19,7 +19,8 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     MatCardModule,
     MatDividerModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
 
   ],
 
@@ -32,7 +33,8 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     MatCardModule,
     MatDividerModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
 
 
   ],

@@ -1,0 +1,12 @@
+<div>
+  <mat-card>
+    <mat-card-content>
+      {{ diaologueMsg }}
+    </mat-card-content>
+
+    <mat-card-actions class="flx-center-row flx-evely">
+      <button mat-raised-button color="warn" (click)="clickedLeftBtn()">{{leftButtonLabel}}</button>
+      <button mat-raised-button color="primary" (click)="clickedRightBtn()">{{rightButtonLabel}}</button>
+     </mat-card-actions>
+  </mat-card>
+</div>
