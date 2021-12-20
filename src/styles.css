@@ -27,3 +27,9 @@ justify-content: space-evenly;
 .w-300{
   width: 18.75rem;
 }
+.mr-10{
+  margin-right: 0.625rem;
+}
+.w-450{
+  width: 28.125rem;
+}

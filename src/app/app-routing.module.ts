@@ -1,3 +1,4 @@
+import { CheklistComponent } from './views/cheklist/cheklist.component';
 import { CategoryComponent } from './views/category/category.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,6 +8,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'category', component: CategoryComponent},
+  {path:'checklist', component:CheklistComponent},
   {path:'**', component:PageNotFoundComponent},
 
 ];

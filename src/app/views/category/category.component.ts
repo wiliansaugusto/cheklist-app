@@ -70,6 +70,21 @@ export class CategoryComponent implements OnInit {
   }
   public createNewCategory() {
     console.warn('clicado no create');
+    this.diaologue.open(CategoryEditComponent, {
+      disableClose: true,
+      data: { actionName : 'Criar' }
+    })
+      .afterClosed().subscribe(
+        resp => {
+          if (resp) {
+            console.warn('categoria criada com sucesso')
 
+          } else {
+            console.warn('Não Foi possivel criar a categoria ')
+
+          }
+
+        }
+      )
   }
 }

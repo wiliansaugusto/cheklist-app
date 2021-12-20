@@ -13,6 +13,9 @@ import { CategoryComponent } from './views/category/category.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { CategoryEditComponent } from './views/category-edit/category-edit.component';
 import { CategoryFormComponent } from './views/category-form/category-form.component';
+import { CheklistComponent } from './views/cheklist/cheklist.component';
+import { ChecklistEditComponent } from './views/checklist-edit/checklist-edit.component';
+import { ChecklistFormComponent } from './views/checklist-form/checklist-form.component';
 
 
 
@@ -27,6 +30,10 @@ import { CategoryFormComponent } from './views/category-form/category-form.compo
     DialogComponent,
     CategoryEditComponent,
     CategoryFormComponent,
+    CheklistComponent,
+    ChecklistEditComponent,
+    ChecklistFormComponent,
+
 
   ],
   imports: [
