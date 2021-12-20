@@ -24,3 +24,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .flx-evely{
 justify-content: space-evenly;
 }
+.w-300{
+  width: 18.75rem;
+}

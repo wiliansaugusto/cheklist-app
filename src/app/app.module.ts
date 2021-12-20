@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { CategoryComponent } from './views/category/category.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { CategoryEditComponent } from './views/category-edit/category-edit.component';
+import { CategoryFormComponent } from './views/category-form/category-form.component';
 
 
 
@@ -22,14 +24,18 @@ import { DialogComponent } from './dialog/dialog.component';
     HomeComponent,
     PageNotFoundComponent,
     CategoryComponent,
-    DialogComponent
+    DialogComponent,
+    CategoryEditComponent,
+    CategoryFormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
