@@ -1,15 +1,12 @@
+import { SnackBarService } from './../../services/snack-bar.service';
+import { CategoryService } from './../../services/category.service';
 import { CategoryEditComponent } from './../category-edit/category-edit.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/_module/category';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 
-export const CATEGORY_DATA = [
-  { id: '1', name: 'Educação', guid: 'aaa-bbb-ccc-ddd' },
-  { id: '2', name: 'Saúde', guid: 'aaa-bbb-ccc-ddd' },
-  { id: '3', name: 'Trabalho', guid: 'aaa-bbb-ccc-ddd' },
-  { id: '4', name: 'Outros', guid: 'aaa-bbb-ccc-ddd' },
-]
+
 
 
 @Component({
@@ -22,10 +19,15 @@ export const CATEGORY_DATA = [
 export class CategoryComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'name', 'actions'];
-  public dataSource: Category[] = CATEGORY_DATA;
-  constructor(private diaologue: MatDialog) { }
+  public dataSource: Category[] = [];
+  constructor(private diaologue: MatDialog, private categoryService: CategoryService, private snackBarService : SnackBarService) { }
 
   ngOnInit(): void {
+    this.categoryService.getAllCategories().subscribe(
+      (resp: Category[]) => {
+        this.dataSource = resp;
+      })
+
   }
 
   public editCatergory(inputCategory: Category) {
@@ -37,10 +39,11 @@ export class CategoryComponent implements OnInit {
       .afterClosed().subscribe(
         resp => {
           if (resp) {
-            console.warn('categoria Editada com sucesso')
+            this.snackBarService.showSnackBar('Não foi possivel editar a categoria', 'Cancelado',6    );
+
 
           } else {
-            console.warn('categoria não editada ')
+            this.snackBarService.showSnackBar('Categoria editada com sucesso', 'OK');
 
           }
 
@@ -57,10 +60,11 @@ export class CategoryComponent implements OnInit {
       .afterClosed().subscribe(
         resp => {
           if (resp) {
-            console.warn('categoria apagada com sucesso')
+            this.snackBarService.showSnackBar('Categoria deletada com sucesso', 'OK', 10);
+
 
           } else {
-            console.warn('categoria não apagada ')
+            this.snackBarService.showSnackBar('Não foi possivel deletar a categoria', 'Cancelado');
 
           }
 
@@ -72,15 +76,15 @@ export class CategoryComponent implements OnInit {
     console.warn('clicado no create');
     this.diaologue.open(CategoryEditComponent, {
       disableClose: true,
-      data: { actionName : 'Criar' }
+      data: { actionName: 'Criar' }
     })
       .afterClosed().subscribe(
         resp => {
           if (resp) {
-            console.warn('categoria criada com sucesso')
+            this.snackBarService.showSnackBar('Não Foi possivel criar a categoria', 'OK', 6);
 
           } else {
-            console.warn('Não Foi possivel criar a categoria ')
+            this.snackBarService.showSnackBar('Categoria criada com sucesso', 'OK', 6);
 
           }
 

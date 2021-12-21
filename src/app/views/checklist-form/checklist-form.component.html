@@ -4,19 +4,35 @@
       <mat-card-title> {{ actionName }} Item do Checklist </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="checklistForm" #formDirective="ngForm">
-        <div>
-          <mat-form-field appearance="outline" >
+      <form [formGroup]="checklistForm"
+      #ChecklistFormDirective="ngForm">
+        <div class="flex-clmn">
+
+          <mat-form-field>
             <mat-label>Descrição</mat-label>
-            <input matInput type="text" formControlName="descripition" />
+            <input matInput type="text" formControlName = "descripition">
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label>Categoria</mat-label>
             <mat-select formControlName="category">
               <mat-option *ngFor="let category of categories" [value]="category"
-                > {{ category.name }}</mat-option
+                >{{category.id}} - {{ category.name }}</mat-option
               >
             </mat-select>
+
+
+          </mat-form-field>
+        </div>
+        <div class="flex-rw-cntr flx-evely">
+          <section>
+            <mat-checkbox formControlName="completed"> Completo</mat-checkbox>
+          </section>
+          <mat-form-field appearance="fill">
+            <mat-label>Deadline</mat-label>
+            <input matInput formControlName="deadline" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
       </form>

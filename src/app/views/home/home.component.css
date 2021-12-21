@@ -1,0 +1,9 @@
+.principal{
+  display: flex;
+  flex-flow: column, wrap;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+.itensPrincipal{
+  text-align: center;
+}

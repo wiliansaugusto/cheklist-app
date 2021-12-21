@@ -1,4 +1,4 @@
-import { CATEGORY_DATA } from './../category/category.component';
+import { CategoryService } from './../../services/category.service';
 import { Component, Input, OnInit, Output , EventEmitter, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Checklist } from 'src/app/_module/checklist';
@@ -13,39 +13,47 @@ export class ChecklistFormComponent implements OnInit {
 
   @Input() public actionName = "Editar";
   @Input() public checklistItem!: Checklist;
+
   @Output() public formCloseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @ViewChild(FormGroupDirective) checklistFormGroupDirective !: FormGroupDirective;
 
-  public categories : Category[]= CATEGORY_DATA;
+  public categories : Category[]= [];
   public checklistForm!: FormGroup;
 
-  constructor( private formBuilder: FormBuilder) {
+  constructor( private formBuilder: FormBuilder, private categoryService : CategoryService) {
+
 
    }
 
   ngOnInit(): void {
+    this.categoryService.getAllCategories().subscribe(
+      (resp : Category[])=>{
+        this.categories = resp;
+        this.createForm();
+      }
+    )
 
-this.checklistForm = this.formBuilder.group({
-  completed : this.checklistItem != null? this.checklistItem.completed : false,
-  descripition : this.checklistItem != null? this.checklistItem.descripition : "",
-  deadeline : this.checklistItem != null? this.checklistItem.deadline : new Date(),
-  category : this.checklistItem != null? this.checklistItem.category : null,
 
-
-})
   }
 
-  public cancel(){
+  private createForm(){
+    this.checklistForm = this.formBuilder.group({
+      completed : [this.checklistItem != null? this.checklistItem.completed : false, [Validators.required]],
+      descripition : [this.checklistItem != null? this.checklistItem.descripition : "", [Validators.required]],
+      deadline : [this.checklistItem != null?  new Date(this.checklistItem.deadline) : new Date(), [Validators.required]],
+      category : [this.checklistItem != null? this.checklistItem.category : null, [Validators.required]],
 
+
+    });
+  }
+  public cancel(){
+    this.formCloseEvent.emit(false);
   }
   public save(){
-
-    this.clearForm();
+    this.formCloseEvent.emit(true);
+   // this.clearForm();
 
   }
-  private clearForm(){
-    this.checklistForm.reset();
-    this.checklistFormGroupDirective.resetForm();
-  }
+
 }

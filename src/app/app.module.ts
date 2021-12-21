@@ -17,6 +17,12 @@ import { CheklistComponent } from './views/cheklist/cheklist.component';
 import { ChecklistEditComponent } from './views/checklist-edit/checklist-edit.component';
 import { ChecklistFormComponent } from './views/checklist-form/checklist-form.component';
 
+//configurações pt-Br locale
+import { LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localePt);
+
 
 
 @NgModule({
@@ -45,7 +51,9 @@ import { ChecklistFormComponent } from './views/checklist-form/checklist-form.co
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue:'pt-BR'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

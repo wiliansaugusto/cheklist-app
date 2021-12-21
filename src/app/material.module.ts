@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -33,6 +35,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatCheckboxModule,
     MatNativeDateModule,
+    MatInputModule,
+    MatSnackBarModule,
 
   ],
 
@@ -51,7 +55,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatInputModule,
+    MatSnackBarModule,
 
 
   ],

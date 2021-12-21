@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Checklist } from 'src/app/_module/checklist';
 
 @Component({
@@ -11,11 +12,22 @@ export class ChecklistEditComponent implements OnInit {
   public actionName = "Editar";
   public checklistItem!: Checklist;
 
-  constructor() { }
+  constructor(public modalRef: MatDialogRef<ChecklistEditComponent>, @Inject(MAT_DIALOG_DATA) public data :any) {
+    if(data.updatableChecklistItem != null){
+      this.checklistItem = data.updatableChecklistItem;
+    }
+    if(data.actionName != null){
+      this.actionName = data.actionName;
+
+    }
+  }
 
   ngOnInit(): void {
   }
-  public formClose($event:any){
 
+  public onFormClose($event:any){
+    this.modalRef.close();
   }
+
+
 }

@@ -33,3 +33,13 @@ justify-content: space-evenly;
 .w-450{
   width: 28.125rem;
 }
+
+.flex-clmn{
+  display: flex;
+  flex-flow: column;
+
+}
+.flex-rw-cntr{
+  display: flex !important;
+  flex-direction: row;
+}
