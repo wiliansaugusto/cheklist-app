@@ -12,7 +12,8 @@ export class ChecklistEditComponent implements OnInit {
   public actionName = "Editar";
   public checklistItem!: Checklist;
 
-  constructor(public modalRef: MatDialogRef<ChecklistEditComponent>, @Inject(MAT_DIALOG_DATA) public data :any) {
+  constructor(public modalRef: MatDialogRef<ChecklistEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data :any) {
     if(data.updatableChecklistItem != null){
       this.checklistItem = data.updatableChecklistItem;
     }

@@ -1,5 +1,4 @@
 export class Category {
-  public id!: string;
-  public name!: string;
   public guid!: string;
+  public name!: string;
 }

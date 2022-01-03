@@ -1,19 +1,9 @@
+import { Checklist } from 'src/app/_module/checklist';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Category } from '../_module/category';
-import { Checklist } from '../_module/checklist';
+import { environment } from 'src/environments/environment';
 
-
-export const CHECKLIST_DATA = [
-  {
-    guid: 'aaa-bbb-ccc-ddd', completed: false, deadline: new Date(), postDate: new Date(),
-    descripition: "Consulta com o Oftalmologistaa", category:{guid:'aaa-bbb-ccc-ddd', name:"Saúde", id:'5'}
-  },
-  {
-    guid: 'aaa-bbb-ccc-ddd', completed: true, deadline: new Date(), postDate:new Date(),
-    descripition: "Ir ao Supermercado", category:{guid:'aaa-bbb-ccc-ddd', name:"Tabalhos", id:'0'}
-  }
-]
 
 
 @Injectable({
@@ -21,11 +11,27 @@ export const CHECKLIST_DATA = [
 })
 export class ChecklistService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
 
-public getAllChecklist() : Observable<Checklist[]>{
-  return of(CHECKLIST_DATA);
-}
+  public getAllChecklist(): Observable<Checklist[]> {
+    return this.httpClient.get<Checklist[]>(`${environment.apiBaseEndpointUrl}checklist`);
+  }
 
+
+  public saveChecklist(checklist: any): Observable<string>{
+    return this.httpClient.post<string>(`${environment.apiBaseEndpointUrl}checklist`, checklist);
+  }
+
+  public updateChecklist(checklist : Checklist): Observable<void>{
+    return this.httpClient.put<void>(`${environment.apiBaseEndpointUrl}checklist`, checklist);
+  }
+
+  public deleteChecklist(guid: string): Observable<void>{
+    return this.httpClient.delete<void>(`${environment.apiBaseEndpointUrl}checklist/${guid}`);
+  }
+
+  public updateStatus(guid :  string, flag : boolean): Observable<void>{
+    return this.httpClient.patch<void>(`${environment.apiBaseEndpointUrl}checklist/${guid}`,{isCompleted : flag});
+  }
 }

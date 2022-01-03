@@ -10,21 +10,20 @@ import { Category } from 'src/app/_module/category';
 export class CategoryEditComponent implements OnInit {
 
   public editableCategory!: Category;
-  public actionName = "Editar"
+  public actionName: string = "Editar";
 
   constructor(private dialogRef: MatDialogRef<CategoryEditComponent>, @Inject(MAT_DIALOG_DATA) dialogData: any) {
 
     if (dialogData.editableCategory != null) {
       this.editableCategory = dialogData.editableCategory;
     }
-    if(dialogData.actionName != null)
-    this.actionName = dialogData.actionName;
+    if (dialogData.actionName != null)
+      this.actionName = dialogData.actionName;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
 
-  }
   public closeModalWindow($event: any) {
     if ($event) this.dialogRef.close();
   }

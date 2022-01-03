@@ -20,16 +20,21 @@ export class CategoryComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'name', 'actions'];
   public dataSource: Category[] = [];
-  constructor(private diaologue: MatDialog, private categoryService: CategoryService, private snackBarService : SnackBarService) { }
+  constructor(private diaologue: MatDialog,
+    private categoryService: CategoryService,
+    private snackBarService: SnackBarService) { }
 
   ngOnInit(): void {
+    this.loadAllCategories();
+
+  }
+
+  private loadAllCategories() {
     this.categoryService.getAllCategories().subscribe(
       (resp: Category[]) => {
         this.dataSource = resp;
       })
-
   }
-
   public editCatergory(inputCategory: Category) {
 
     this.diaologue.open(CategoryEditComponent, {
@@ -37,20 +42,20 @@ export class CategoryComponent implements OnInit {
       data: { editableCategory: inputCategory }
     })
       .afterClosed().subscribe(
-        resp => {
+        (resp: any) => {
+
           if (resp) {
-            this.snackBarService.showSnackBar('Não foi possivel editar a categoria', 'Cancelado',6    );
-
-
+            this.loadAllCategories();
+            this.snackBarService.showSnackBar('Cancelado com sucesso', 'OK',500);
           } else {
-            this.snackBarService.showSnackBar('Categoria editada com sucesso', 'OK');
+            this.loadAllCategories();
+
 
           }
 
         }
       )
   }
-
 
   public deleteCatergory(category: Category) {
     this.diaologue.open(DialogComponent, {
@@ -61,6 +66,15 @@ export class CategoryComponent implements OnInit {
         resp => {
           if (resp) {
             this.snackBarService.showSnackBar('Categoria deletada com sucesso', 'OK', 10);
+            this.categoryService.deleteCategorie(category.guid).subscribe(
+              (resp: any) => {
+                this.loadAllCategories();
+                this.snackBarService.showSnackBar('Categoria Apagada com sucesso', "OK")
+              }, (erro: any) => {
+                this.snackBarService.showSnackBar('Categoria esta em uso', "OK")
+
+              }
+            )
 
 
           } else {
@@ -73,22 +87,25 @@ export class CategoryComponent implements OnInit {
 
   }
   public createNewCategory() {
-    console.warn('clicado no create');
     this.diaologue.open(CategoryEditComponent, {
       disableClose: true,
       data: { actionName: 'Criar' }
+
     })
       .afterClosed().subscribe(
-        resp => {
-          if (resp) {
-            this.snackBarService.showSnackBar('Não Foi possivel criar a categoria', 'OK', 6);
+        (resp : any) => {
 
+          if(resp) {
+            this.loadAllCategories();
           } else {
-            this.snackBarService.showSnackBar('Categoria criada com sucesso', 'OK', 6);
+            this.loadAllCategories();
 
           }
 
         }
       )
   }
+
+
+
 }

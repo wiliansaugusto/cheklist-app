@@ -31,7 +31,8 @@ export class DialogComponent implements OnInit {
   }
 
   public clickedLeftBtn(){
-      this.dialogRef.close(false);
+
+    this.dialogRef.close(false);
   }
   public clickedRightBtn(){
     this.dialogRef.close(true);
