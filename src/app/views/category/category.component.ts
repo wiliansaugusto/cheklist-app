@@ -63,7 +63,7 @@ export class CategoryComponent implements OnInit {
       data: { diaologueMsg: "Você tem certeza que deseja apagar a categoria", leftButtonLabel: "Não", rightButtonLabel: "SIM" }
     })
       .afterClosed().subscribe(
-        resp => {
+        (        resp: any) => {
           if (resp) {
             this.snackBarService.showSnackBar('Categoria deletada com sucesso', 'OK', 10);
             this.categoryService.deleteCategorie(category.guid).subscribe(
